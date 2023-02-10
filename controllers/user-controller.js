@@ -39,7 +39,7 @@ export const signup = async (req, res, next) => {
   try {
     await user.save();
   } catch (err) {
-    return console.log("err in signup ",err);
+    return console.log(err);
   }
   return res.status(201).json({ user });
 };
@@ -50,7 +50,7 @@ export const login = async (req, res, next) => {
   try {
     existingUser = await User.findOne({ email });
   } catch (err) {
-    return console.log("error in login",err);
+    return console.log(err);
   }
   if (!existingUser) {
     return res.status(404).json({ message: "Couldnt Find User By This Email" });
